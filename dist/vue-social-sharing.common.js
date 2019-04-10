@@ -269,7 +269,8 @@ var SocialSharing = {
      * @param network Social network key.
      */
     touch: function touch (network) {
-      window.open(this.createSharingUrl(network), '_self');
+      window.open(this.createSharingUrl(network),
+                  this.networks[network].type === 'window' ? '_blank' : '_self');
 
       this.$root.$emit('social_shares_open', network, this.url);
       this.$emit('open', network, this.url);
